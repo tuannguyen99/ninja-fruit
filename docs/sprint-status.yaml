@@ -1,72 +1,89 @@
-sprint:
-  id: sprint-1-core-mvp
-  name: "Sprint 1 - Core MVP"
+# generated: 2025-11-27
+# project: Ninja Fruit Unity Test Automation
+# project_key: ninja-fruit
+# tracking_system: file-system
+# story_location: docs/stories
+
+# STATUS DEFINITIONS:
+# ==================
+# Epic Status:
+#   - backlog: Epic exists in epic file but not contexted
+#   - contexted: Epic tech context created (required before drafting stories)
+#
+# Story Status:
+#   - backlog: Story only exists in epic file
+#   - drafted: Story file created in stories folder
+#   - ready-for-dev: Draft approved and story context created
+#   - in-progress: Developer actively working on implementation
+#   - review: Under SM review (via code-review workflow)
+#   - done: Story completed
+#
+# Retrospective Status:
+#   - optional: Can be completed but not required
+#   - completed: Retrospective has been done
+#
+# WORKFLOW NOTES:
+# ===============
+# - Epics should be 'contexted' before stories can be 'drafted'
+# - Stories can be worked in parallel if team capacity allows
+# - SM typically drafts next story after previous one is 'done' to incorporate learnings
+# - Dev moves story to 'review', SM reviews, then Dev moves to 'done'
+
+generated: 2025-11-27
+project: Ninja Fruit Unity Test Automation
+project_key: ninja-fruit
+tracking_system: file-system
+story_location: docs/stories
+
+development_status:
+  # EPIC-001: Core Slicing Mechanics (13 pts)
+  epic-001: backlog
+  story-001-fruitspawner-mvp: drafted
+  story-002-swipedetector-mvp: drafted
+  story-003-collisionmanager-mvp: drafted
+  epic-001-retrospective: optional
+
+  # EPIC-002: Scoring System (8 pts)
+  epic-002: backlog
+  story-004-scoremanager-base: drafted
+  story-005-combo-multiplier: drafted
+  story-006-bomb-golden: drafted
+  epic-002-retrospective: optional
+
+  # EPIC-003: Multi-Platform Input (8 pts)
+  epic-003: backlog
+  story-007-input-mouse: drafted
+  story-008-input-touch: drafted
+  story-009-input-actions-asset: drafted
+  epic-003-retrospective: optional
+
+sprint_summary:
+  sprint_id: sprint-1-core-mvp
+  sprint_name: "Sprint 1 - Core MVP"
   start_date: 2025-11-27
   end_date: 2025-12-10
-  goals:
-    - Deliver a minimal playable loop (spawn, swipe, slice)
-    - Provide unit tests for core mechanics
-    - Set up testable input abstraction for mouse and touch
-  total_points: 27
+  total_epics: 3
+  total_stories: 9
+  total_points: 29
+  contexted_epics: 0
+  stories_drafted: 9
+  stories_ready: 0
+  stories_in_progress: 0
+  stories_done: 0
 
-stories:
-  - id: STORY-001
-    title: FruitSpawner MVP
-    epic: EPIC-001
-    points: 5
-    status: TODO
-    owner: Link Freeman
-  - id: STORY-002
-    title: SwipeDetector MVP
-    epic: EPIC-001
-    points: 4
-    status: TODO
-    owner: Link Freeman
-  - id: STORY-003
-    title: CollisionManager MVP
-    epic: EPIC-001
-    points: 4
-    status: TODO
-    owner: Link Freeman
-  - id: STORY-004
-    title: ScoreManager - Base Scoring & Persistence
-    epic: EPIC-002
-    points: 3
-    status: TODO
-    owner: Link Freeman
-  - id: STORY-005
-    title: Combo Multiplier Logic
-    epic: EPIC-002
-    points: 3
-    status: TODO
-    owner: Link Freeman
-  - id: STORY-006
-    title: Bomb Penalty & Golden Fruit
-    epic: EPIC-002
-    points: 2
-    status: TODO
-    owner: Link Freeman
-  - id: STORY-007
-    title: InputManager - Mouse Support
-    epic: EPIC-003
-    points: 2
-    status: TODO
-    owner: Link Freeman
-  - id: STORY-008
-    title: InputManager - Touch Support
-    epic: EPIC-003
-    points: 3
-    status: TODO
-    owner: Link Freeman
-  - id: STORY-009
-    title: Input Actions Asset + Bindings
-    epic: EPIC-003
-    points: 3
-    status: TODO
-    owner: Link Freeman
+sprint_goals:
+  - Deliver a minimal playable loop (spawn, swipe, slice)
+  - Provide unit tests for core mechanics with 80%+ coverage
+  - Set up testable input abstraction for mouse and touch
+  - Establish CI/CD foundation for automated test execution
 
-notes:
-  - sprint_risks:
-      - Need Unity 6 installed to run Play Mode tests locally
-      - CI requires Unity license or GameCI setup
-  - acceptance_definition: "All story ACs must be covered by automated tests (Edit Mode or Play Mode) and merged artifacts must pass CI tests before merge."
+sprint_risks:
+  - Unity 6 installation required for Play Mode tests locally
+  - CI requires Unity license activation or GameCI setup
+  - New Input System learning curve for touch simulation
+
+acceptance_criteria:
+  - All story ACs must be covered by automated tests (Edit Mode or Play Mode)
+  - Tests must pass locally before marking story as 'review'
+  - Code reviews must validate test coverage before marking 'done'
+  - CI pipeline must pass for all commits
