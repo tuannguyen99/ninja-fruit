@@ -1,0 +1,72 @@
+sprint:
+  id: sprint-1-core-mvp
+  name: "Sprint 1 - Core MVP"
+  start_date: 2025-11-27
+  end_date: 2025-12-10
+  goals:
+    - Deliver a minimal playable loop (spawn, swipe, slice)
+    - Provide unit tests for core mechanics
+    - Set up testable input abstraction for mouse and touch
+  total_points: 27
+
+stories:
+  - id: STORY-001
+    title: FruitSpawner MVP
+    epic: EPIC-001
+    points: 5
+    status: TODO
+    owner: Link Freeman
+  - id: STORY-002
+    title: SwipeDetector MVP
+    epic: EPIC-001
+    points: 4
+    status: TODO
+    owner: Link Freeman
+  - id: STORY-003
+    title: CollisionManager MVP
+    epic: EPIC-001
+    points: 4
+    status: TODO
+    owner: Link Freeman
+  - id: STORY-004
+    title: ScoreManager - Base Scoring & Persistence
+    epic: EPIC-002
+    points: 3
+    status: TODO
+    owner: Link Freeman
+  - id: STORY-005
+    title: Combo Multiplier Logic
+    epic: EPIC-002
+    points: 3
+    status: TODO
+    owner: Link Freeman
+  - id: STORY-006
+    title: Bomb Penalty & Golden Fruit
+    epic: EPIC-002
+    points: 2
+    status: TODO
+    owner: Link Freeman
+  - id: STORY-007
+    title: InputManager - Mouse Support
+    epic: EPIC-003
+    points: 2
+    status: TODO
+    owner: Link Freeman
+  - id: STORY-008
+    title: InputManager - Touch Support
+    epic: EPIC-003
+    points: 3
+    status: TODO
+    owner: Link Freeman
+  - id: STORY-009
+    title: Input Actions Asset + Bindings
+    epic: EPIC-003
+    points: 3
+    status: TODO
+    owner: Link Freeman
+
+notes:
+  - sprint_risks:
+      - Need Unity 6 installed to run Play Mode tests locally
+      - CI requires Unity license or GameCI setup
+  - acceptance_definition: "All story ACs must be covered by automated tests (Edit Mode or Play Mode) and merged artifacts must pass CI tests before merge."
