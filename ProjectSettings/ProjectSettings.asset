@@ -6,24 +6,43 @@ PlayerSettings:
   serializedVersion: 24
   productName: Ninja Fruit
   productionCompanyName: 
-  productDescription: A fast-paced casual arcade game where players slice falling fruits
+  productDescription: Casual arcade fruit slicing game
   defaultIcon: {fileID: 0}
   defaultScreenWidth: 1920
   defaultScreenHeight: 1080
-  targetIOSGraphics: -1
-  m_TargetDevice: 2
+  defaultScreenWidthWeb: 960
+  defaultScreenHeightWeb: 600
+  m_TargetDevice: 0
   m_EditorShowResolutionDialog: 1
-  m_UsePlayerLog: 1
-  dedicatedServerOptimizations: 0
-  bufferGPUFramework: 0
-  phoneIdentifier: 
+  m_DefaultIsFullScreen: 1
+  m_DefaultIsNativeResolution: 1
+  runInBackground: 1
+  captureSingleScreen: 0
+  muteOtherAudioSources: 0
+  Standalone: 0
+  fullscreenMode: 1
+  visibleWhenPaused: 0
+  allowHideUI: 0
+  iosShowActivityIndicatorOnLoading: -1
+  androidShowActivityIndicatorOnLoading: -1
+  iosAppInBackgroundBehavior: 0
+  displayResolutionDialog: 1
+  iosUseCustomAppBackgroundBehavior: 0
+  iosAllowHTTPStreaming: 0
+  allowFramebufferColorMemoryless: 0
+  loadingBooster: 1
+  phoneIdentifier: iphone
   buildNumber:
-    iOS: 0
-  overrideDefaultApplicationIdentifier: 0
+    iPhone: 0
+    tvOS: 0
+  overrideIPodMusic: 1
+  overrideIPodMusicVolume: 0.5
   applicationIdentifier:
     Android: com.example.ninjafruit
     iPhone: com.example.ninjafruit
-  Standalone:
+    tvOS: com.example.ninjafruit
+    Standalone: com.example.ninjafruit
+    WebGL: com.example.ninjafruit
   cloudProjectId: 
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames:
