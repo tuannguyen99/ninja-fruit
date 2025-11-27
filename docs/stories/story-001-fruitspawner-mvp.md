@@ -25,3 +25,7 @@ Create `FruitSpawner` component capable of instantiating fruit prefabs with conf
 - At score 0, spawn interval = 2.0s
 - At score 500, spawn interval = 1.0s
 - `SpawnFruit()` creates a GameObject tagged `Fruit` with Rigidbody2D
+
+## Status
+- **Done**: 2025-11-28
+- **Commit**: 3ca43b1
