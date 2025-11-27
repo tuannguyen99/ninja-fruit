@@ -47,6 +47,42 @@ jobs:
           path: |
             ninja-fruit/logs/editmode-test-results.xml
             ninja-fruit/logs/playmode-test-results.xml
+      - name: Fail on test failures
+        run: |
+          python3 - <<'PY'
+          import sys, os
+          import xml.etree.ElementTree as ET
+
+          files = ["ninja-fruit/logs/editmode-test-results.xml", "ninja-fruit/logs/playmode-test-results.xml"]
+          any_missing = False
+          total_failed = 0
+
+          for f in files:
+              if not os.path.exists(f):
+                  print(f"Missing test results: {f}", file=sys.stderr)
+                  any_missing = True
+                  continue
+              try:
+                  tree = ET.parse(f)
+                  root = tree.getroot()
+                  failed = int(root.get('failed') or 0)
+                  if failed > 0:
+                      print(f"{f}: failed={failed}", file=sys.stderr)
+                  total_failed += failed
+              except Exception as e:
+                  print(f"Error parsing {f}: {e}", file=sys.stderr)
+                  any_missing = True
+
+          if any_missing:
+              print('One or more test result files are missing or unreadable.', file=sys.stderr)
+              sys.exit(2)
+
+          if total_failed > 0:
+              print(f"Tests failed: total failed = {total_failed}", file=sys.stderr)
+              sys.exit(1)
+
+          print('All Unity tests passed.')
+          PY
 
       - name: Deactivate Unity license
         if: secrets.UNITY_LICENSE
