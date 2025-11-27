@@ -3,7 +3,7 @@
 --- !u!129 &1
 PlayerSettings:
   m_ObjectHideFlags: 0
-  serializedVersion: 23
+  serializedVersion: 24
   productName: Ninja Fruit
   productionCompanyName: 
   productDescription: A fast-paced casual arcade game where players slice falling fruits
