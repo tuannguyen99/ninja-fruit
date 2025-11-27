@@ -16,6 +16,7 @@ jobs:
           lfs: true
 
       - name: Setup Unity
+        id: setup
         uses: game-ci/unity-actions/setup@v4
         with:
           unityVersion: '6000.0.62f1'
@@ -33,11 +34,11 @@ jobs:
       - name: Run EditMode tests
         # Project sits in subfolder 'ninja-fruit'
         run: |
-          /usr/bin/unity-editor -projectPath $GITHUB_WORKSPACE/ninja-fruit -batchmode -runTests -testPlatform EditMode -testResults $GITHUB_WORKSPACE/ninja-fruit/logs/editmode-test-results.xml -quit
+          "${{ steps.setup.outputs.editorPath }}" -projectPath $GITHUB_WORKSPACE/ninja-fruit -batchmode -runTests -testPlatform EditMode -testResults $GITHUB_WORKSPACE/ninja-fruit/logs/editmode-test-results.xml -quit
 
       - name: Run PlayMode tests
         run: |
-          /usr/bin/unity-editor -projectPath $GITHUB_WORKSPACE/ninja-fruit -batchmode -runTests -testPlatform PlayMode -testResults $GITHUB_WORKSPACE/ninja-fruit/logs/playmode-test-results.xml -quit
+          "${{ steps.setup.outputs.editorPath }}" -projectPath $GITHUB_WORKSPACE/ninja-fruit -batchmode -runTests -testPlatform PlayMode -testResults $GITHUB_WORKSPACE/ninja-fruit/logs/playmode-test-results.xml -quit
 
       - name: Upload test results
         uses: actions/upload-artifact@v4
