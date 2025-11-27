@@ -5,6 +5,7 @@ on:
     branches: [ master ]
   pull_request:
     branches: [ master ]
+  workflow_dispatch: {}
 
 jobs:
   playmode-tests:
@@ -17,7 +18,7 @@ jobs:
 
       - name: Setup Unity
         id: setup
-        uses: game-ci/unity-actions/setup@v4
+        uses: game-ci/unity-actions/setup@main
         with:
           unityVersion: '6000.0.62f1'
       - name: Check UNITY_LICENSE secret
@@ -29,7 +30,7 @@ jobs:
 
       - name: Activate Unity license
         if: ${{ steps.check_license.outputs.has_license == 'true' }}
-        uses: game-ci/unity-actions/activate@v2
+        uses: game-ci/unity-actions/activate@main
         with:
           unitySerial: ${{ secrets.UNITY_LICENSE }}
 
@@ -175,4 +176,4 @@ jobs:
 
       - name: Deactivate Unity license
         if: ${{ steps.check_license.outputs.has_license == 'true' }}
-        uses: game-ci/unity-actions/deactivate@v1
+        uses: game-ci/unity-actions/deactivate@main
