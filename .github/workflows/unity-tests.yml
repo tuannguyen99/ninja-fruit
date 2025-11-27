@@ -47,6 +47,29 @@ jobs:
           path: |
             ninja-fruit/logs/editmode-test-results.xml
             ninja-fruit/logs/playmode-test-results.xml
+      - name: Print test summary
+        run: |
+          python3 - <<'PY'
+          import os, sys
+          import xml.etree.ElementTree as ET
+
+          files = ["ninja-fruit/logs/editmode-test-results.xml", "ninja-fruit/logs/playmode-test-results.xml"]
+          for f in files:
+              if not os.path.exists(f):
+                  print(f"{f}: MISSING")
+                  continue
+              try:
+                  tree = ET.parse(f)
+                  root = tree.getroot()
+                  total = root.get('total') or root.get('testcasecount') or 'N/A'
+                  passed = root.get('passed') or '0'
+                  failed = root.get('failed') or '0'
+                  result = root.get('result') or ''
+                  duration = root.get('duration') or ''
+                  print(f"{os.path.basename(f)}: result={result} total={total} passed={passed} failed={failed} duration={duration}")
+              except Exception as e:
+                  print(f"{f}: parse error: {e}", file=sys.stderr)
+          PY
       - name: Fail on test failures
         run: |
           python3 - <<'PY'
