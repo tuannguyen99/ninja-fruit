@@ -40,13 +40,7 @@ jobs:
         run: |
           "${{ steps.setup.outputs.editorPath }}" -projectPath $GITHUB_WORKSPACE/ninja-fruit -batchmode -runTests -testPlatform PlayMode -testResults $GITHUB_WORKSPACE/ninja-fruit/logs/playmode-test-results.xml -quit
 
-      - name: Upload test results
-        uses: actions/upload-artifact@v4
-        with:
-          name: unity-test-results
-          path: |
-            ninja-fruit/logs/editmode-test-results.xml
-            ninja-fruit/logs/playmode-test-results.xml
+      
       - name: Print test summary
         run: |
           python3 - <<'PY'
@@ -70,6 +64,72 @@ jobs:
               except Exception as e:
                   print(f"{f}: parse error: {e}", file=sys.stderr)
           PY
+          - name: Generate HTML reports
+          run: |
+            python3 - <<'PY'
+            import os, sys
+            import xml.etree.ElementTree as ET
+
+            def xml_to_html(xml_path, html_path):
+              try:
+                tree = ET.parse(xml_path)
+                root = tree.getroot()
+              except Exception as e:
+                with open(html_path, 'w', encoding='utf-8') as f:
+                  f.write(f"<html><body><h1>Unable to parse {xml_path}</h1><pre>{e}</pre></body></html>")
+                return
+
+              title = os.path.basename(xml_path)
+              total = root.get('total') or root.get('testcasecount') or 'N/A'
+              passed = root.get('passed') or '0'
+              failed = root.get('failed') or '0'
+              result = root.get('result') or ''
+              duration = root.get('duration') or ''
+
+              rows = []
+              # find all test-case nodes
+              for tc in root.findall('.//test-case'):
+                name = tc.get('name') or tc.get('methodname') or 'unknown'
+                classname = tc.get('classname') or ''
+                res = tc.get('result') or ''
+                dur = tc.get('duration') or ''
+                rows.append((name, classname, res, dur))
+
+              with open(html_path, 'w', encoding='utf-8') as f:
+                f.write('<!doctype html><html><head><meta charset="utf-8"><title>')
+                f.write(title)
+                f.write('</title><style>body{font-family:Arial,Helvetica,sans-serif}table{border-collapse:collapse;width:100%}td,th{border:1px solid #ccc;padding:6px}</style></head><body>')
+                f.write(f'<h1>{title}</h1>')
+                f.write(f'<p>result={result} total={total} passed={passed} failed={failed} duration={duration}</p>')
+                f.write('<table><thead><tr><th>Test</th><th>Class</th><th>Result</th><th>Duration</th></tr></thead><tbody>')
+                for name, classname, res, dur in rows:
+                  color = 'style="background:#c8ffc8"' if res.lower()=='passed' else ('style="background:#ffd0d0"' if res.lower()=='failed' else '')
+                  f.write(f'<tr {color}><td>{name}</td><td>{classname}</td><td>{res}</td><td>{dur}</td></tr>')
+                f.write('</tbody></table>')
+                f.write('</body></html>')
+
+            os.makedirs('ninja-fruit/logs', exist_ok=True)
+            pairs = [
+              ('ninja-fruit/logs/editmode-test-results.xml', 'ninja-fruit/logs/editmode-test-results.html'),
+              ('ninja-fruit/logs/playmode-test-results.xml', 'ninja-fruit/logs/playmode-test-results.html'),
+            ]
+            for xmlp, htmlp in pairs:
+              if os.path.exists(xmlp):
+                xml_to_html(xmlp, htmlp)
+              else:
+                with open(htmlp, 'w', encoding='utf-8') as f:
+                  f.write(f'<html><body><h1>{os.path.basename(xmlp)}: MISSING</h1></body></html>')
+            PY
+      - name: Upload test results
+        uses: actions/upload-artifact@v4
+        with:
+          name: unity-test-results
+          path: |
+            ninja-fruit/logs/editmode-test-results.xml
+            ninja-fruit/logs/playmode-test-results.xml
+            ninja-fruit/logs/editmode-test-results.html
+            ninja-fruit/logs/playmode-test-results.html
+
       - name: Fail on test failures
         run: |
           python3 - <<'PY'
