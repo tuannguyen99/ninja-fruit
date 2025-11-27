@@ -20,9 +20,15 @@ jobs:
         uses: game-ci/unity-actions/setup@v4
         with:
           unityVersion: '6000.0.62f1'
+      - name: Check UNITY_LICENSE secret
+        id: check_license
+        run: |
+          if [ -z "${UNITY_LICENSE}" ]; then echo "has_license=false" >> "$GITHUB_OUTPUT"; else echo "has_license=true" >> "$GITHUB_OUTPUT"; fi
+        env:
+          UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
 
       - name: Activate Unity license
-        if: secrets.UNITY_LICENSE
+        if: ${{ steps.check_license.outputs.has_license == 'true' }}
         uses: game-ci/unity-actions/activate@v2
         with:
           unitySerial: ${{ secrets.UNITY_LICENSE }}
@@ -168,5 +174,5 @@ jobs:
           PY
 
       - name: Deactivate Unity license
-        if: secrets.UNITY_LICENSE
+        if: ${{ steps.check_license.outputs.has_license == 'true' }}
         uses: game-ci/unity-actions/deactivate@v1
