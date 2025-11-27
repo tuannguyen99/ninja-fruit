@@ -16,36 +16,20 @@ jobs:
         with:
           lfs: true
 
-      - name: Setup Unity
-        id: setup
-        uses: game-ci/unity-actions/setup@main
+      - name: Run Unity tests (EditMode + PlayMode)
+        uses: game-ci/unity-test-runner@v4.3.1
         with:
           unityVersion: '6000.0.62f1'
-      - name: Check UNITY_LICENSE secret
-        id: check_license
-        run: |
-          if [ -z "${UNITY_LICENSE}" ]; then echo "has_license=false" >> "$GITHUB_OUTPUT"; else echo "has_license=true" >> "$GITHUB_OUTPUT"; fi
-        env:
-          UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
-
-      - name: Activate Unity license
-        if: ${{ steps.check_license.outputs.has_license == 'true' }}
-        uses: game-ci/unity-actions/activate@main
-        with:
-          unitySerial: ${{ secrets.UNITY_LICENSE }}
+          projectPath: 'ninja-fruit'
+          testMode: 'all'
+          artifactsPath: 'ninja-fruit/logs'
+          githubToken: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Prepare logs dir
         run: |
           mkdir -p ninja-fruit/logs
 
-      - name: Run EditMode tests
-        # Project sits in subfolder 'ninja-fruit'
-        run: |
-          "${{ steps.setup.outputs.editorPath }}" -projectPath $GITHUB_WORKSPACE/ninja-fruit -batchmode -runTests -testPlatform EditMode -testResults $GITHUB_WORKSPACE/ninja-fruit/logs/editmode-test-results.xml -quit
-
-      - name: Run PlayMode tests
-        run: |
-          "${{ steps.setup.outputs.editorPath }}" -projectPath $GITHUB_WORKSPACE/ninja-fruit -batchmode -runTests -testPlatform PlayMode -testResults $GITHUB_WORKSPACE/ninja-fruit/logs/playmode-test-results.xml -quit
+      
 
       
       - name: Print test summary
@@ -174,6 +158,4 @@ jobs:
           print('All Unity tests passed.')
           PY
 
-      - name: Deactivate Unity license
-        if: ${{ steps.check_license.outputs.has_license == 'true' }}
-        uses: game-ci/unity-actions/deactivate@main
+      
