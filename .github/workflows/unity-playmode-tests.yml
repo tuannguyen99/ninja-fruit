@@ -1,0 +1,42 @@
+name: Unity PlayMode Tests
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  playmode-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          lfs: true
+
+      - name: Setup Unity
+        uses: game-ci/unity-actions/setup@v4
+        with:
+          unityVersion: '6000.0.62f1'
+
+      - name: Activate Unity license
+        if: secrets.UNITY_LICENSE
+        uses: game-ci/unity-actions/activate@v2
+        with:
+          unitySerial: ${{ secrets.UNITY_LICENSE }}
+
+      - name: Run PlayMode tests
+        # Project sits in subfolder 'ninja-fruit'
+        run: |
+          /usr/bin/unity-editor -projectPath $GITHUB_WORKSPACE/ninja-fruit -batchmode -runTests -testPlatform PlayMode -testResults $GITHUB_WORKSPACE/ninja-fruit/logs/playmode-test-results.xml -quit
+
+      - name: Upload test results
+        uses: actions/upload-artifact@v4
+        with:
+          name: playmode-test-results
+          path: ninja-fruit/logs/playmode-test-results.xml
+
+      - name: Deactivate Unity license
+        if: secrets.UNITY_LICENSE
+        uses: game-ci/unity-actions/deactivate@v1
