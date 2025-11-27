@@ -6,72 +6,97 @@ PlayerSettings:
   serializedVersion: 24
   productName: Ninja Fruit
   productionCompanyName: 
-  productDescription: Casual arcade fruit slicing game
+  productDescription: 
   defaultIcon: {fileID: 0}
   defaultScreenWidth: 1920
   defaultScreenHeight: 1080
   defaultScreenWidthWeb: 960
   defaultScreenHeightWeb: 600
-  m_TargetDevice: 0
-  m_EditorShowResolutionDialog: 1
-  m_DefaultIsFullScreen: 1
-  m_DefaultIsNativeResolution: 1
-  runInBackground: 1
-  captureSingleScreen: 0
-  muteOtherAudioSources: 0
-  Standalone: 0
-  fullscreenMode: 1
-  visibleWhenPaused: 0
-  allowHideUI: 0
+  m_RenderingPath: 1
+  m_MobileRenderingPath: 1
+  m_ActiveColorSpace: 0
+  m_MTRendering: 1
+  m_StackTraceTypes: 010000000100000001000000010000000100000001000000
   iosShowActivityIndicatorOnLoading: -1
   androidShowActivityIndicatorOnLoading: -1
-  iosAppInBackgroundBehavior: 0
-  displayResolutionDialog: 1
-  iosUseCustomAppBackgroundBehavior: 0
-  iosAllowHTTPStreaming: 0
-  allowFramebufferColorMemoryless: 0
-  loadingBooster: 1
-  phoneIdentifier: iphone
-  buildNumber:
-    iPhone: 0
-    tvOS: 0
-  overrideIPodMusic: 1
-  overrideIPodMusicVolume: 0.5
-  applicationIdentifier:
-    Android: com.example.ninjafruit
-    iPhone: com.example.ninjafruit
-    tvOS: com.example.ninjafruit
-    Standalone: com.example.ninjafruit
-    WebGL: com.example.ninjafruit
-  cloudProjectId: 
-  framebufferDepthMemorylessMode: 0
-  qualitySettingsNames:
-  - Very Low
-  - Low
-  - Medium
-  - High
-  - Very High
-  - Ultra
-  m_QualitySettingsNames:
-  - Very Low
-  - Low
-  - Medium
-  - High
-  - Very High
-  - Ultra
-  m_QualitySettingsValues: []
-  webplayerNetDebugUrl: http://localhost:8080
-  m_BuildTargetNames: []
+  targetDevice: 0
+  useOnDemandResources: 0
+  accelerometerFrequency: 60
+  companyName: DefaultCompany
+  defaultCursor: {fileID: 0}
+  cursorHotspot: {x: 0, y: 0}
+  m_SplashScreenStyle: 1
+  m_ShowUnitySplashScreen: 1
+  m_ShowUnitySplashLogo: 1
+  m_SplashScreenAnimationMode: 1
+  m_SplashScreenLogoAnimationMode: 1
+  m_SplashScreenLogoBranding: 0
+  m_SplashScreenBranding: 0
+  m_SplashScreenFadeOutDuration: 1
+  m_SplashScreenMinimumDisplayDuration: 2
+  m_SplashScreenWaitMode: 1
+  m_SplashScreenBackgroundAnimationMode: 1
+  m_TargetIOSGraphics: -1
+  m_TargetTVOSGraphics: -1
+  m_ShowMobileResolutionDialog: 0
+  m_TargetDevice: 0
+  m_GameViewRenderMode: 0
+  m_DefaultScreenOrientation: 4
+  m_AllowedAutorotateToPortrait: 1
+  m_AllowedAutorotateToPortraitUpsideDown: 1
+  m_AllowedAutorotateToLandscapeRight: 1
+  m_AllowedAutorotateToLandscapeLeft: 1
+  m_UseAnimatedAutorotation: 1
+  m_Use32BitDisplayBuffer: 0
+  m_PreserveFramebufferAlpha: 0
+  m_DisableDepthAndStencilBuffers: 0
+  m_AndroidBlitType: 0
+  m_DefaultIsFullScreen: 1
+  m_DefaultIsNativeResolution: 1
+  m_MacRetinaSupport: 1
+  m_RunInBackground: 1
+  m_ActionOnDotNetUnhandledException: 0
+  m_RenderingThreadingMode: 1
+  m_GraphicsJobMode: 0
+  m_UseHDR: 0
+  m_MSAALevel: 1
+  m_DefaultScreenQuality: 1
+  m_Version: 
+  onlyExternalDocumentationForScriptingAPI: 0
+  useSRGBDefaultRenderTextureForScriptingAPI: 1
   allowUnsafePublicAssemblies: 0
-  clonedPlayerSettingsName: 
-  cloudEnabled: 0
-  insecureHttpWarningSuppressions: []
-  useLegacyResolutionDialogForWebGL: 0
-  m_OperatingSystemFamily: Windows
-  activeColorSpace: 0
+  freeType: 1
+  fontRenderingMode: 0
+  fontNames: []
+  fontNamesArray:
+  - Arial
+  - Helvetica
+  - Times New Roman
+  - Courier New
+  - Verdana
+  - Arial Black
+  - Trebuchet MS
+  cloudProjectId: 
+  organizationId: 
+  projectId: 
+  defaultDPI: 0
+  preferredDefaultRenderingPath: 1
+  preferredDefaultMobileRenderingPath: 1
+  mipStripping: 0
+  numberOfMipsStripped: 0
+  meshDecomposition: 0
+  enableGPUInstancing: 1
+  enableInstancingVariants: 0
+  enableGPUSkinning: 0
+  platformMaximumLODLevel: 
+  particleSystemCopyParticlesToActiveBones: 0
+  activeInputHandler: 0
   enableNativePlatformBackendsForNewInputSystem: 1
   disableInputActionSerialization: 0
   defaultInterfaceOrientation: 0
   allowHTTPClientToUsePersistentConnections: 1
   logging:
     enableRedirectingConsoleOutput: 1
+    enableLogStackTrace: 1
+    logOdds: 1
+    clearBeforePlay: 1
