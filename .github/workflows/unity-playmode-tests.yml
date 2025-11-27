@@ -26,16 +26,26 @@ jobs:
         with:
           unitySerial: ${{ secrets.UNITY_LICENSE }}
 
-      - name: Run PlayMode tests
+      - name: Prepare logs dir
+        run: |
+          mkdir -p ninja-fruit/logs
+
+      - name: Run EditMode tests
         # Project sits in subfolder 'ninja-fruit'
+        run: |
+          /usr/bin/unity-editor -projectPath $GITHUB_WORKSPACE/ninja-fruit -batchmode -runTests -testPlatform EditMode -testResults $GITHUB_WORKSPACE/ninja-fruit/logs/editmode-test-results.xml -quit
+
+      - name: Run PlayMode tests
         run: |
           /usr/bin/unity-editor -projectPath $GITHUB_WORKSPACE/ninja-fruit -batchmode -runTests -testPlatform PlayMode -testResults $GITHUB_WORKSPACE/ninja-fruit/logs/playmode-test-results.xml -quit
 
       - name: Upload test results
         uses: actions/upload-artifact@v4
         with:
-          name: playmode-test-results
-          path: ninja-fruit/logs/playmode-test-results.xml
+          name: unity-test-results
+          path: |
+            ninja-fruit/logs/editmode-test-results.xml
+            ninja-fruit/logs/playmode-test-results.xml
 
       - name: Deactivate Unity license
         if: secrets.UNITY_LICENSE
