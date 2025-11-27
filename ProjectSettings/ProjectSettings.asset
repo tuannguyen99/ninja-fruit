@@ -1,0 +1,58 @@
+%YAML 1.1
+%TAG ! tag:yaml.org,2002:
+--- !u!129 &1
+PlayerSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 23
+  productName: Ninja Fruit
+  productionCompanyName: 
+  productDescription: A fast-paced casual arcade game where players slice falling fruits
+  defaultIcon: {fileID: 0}
+  defaultScreenWidth: 1920
+  defaultScreenHeight: 1080
+  targetIOSGraphics: -1
+  m_TargetDevice: 2
+  m_EditorShowResolutionDialog: 1
+  m_UsePlayerLog: 1
+  dedicatedServerOptimizations: 0
+  bufferGPUFramework: 0
+  phoneIdentifier: 
+  buildNumber:
+    iOS: 0
+  overrideDefaultApplicationIdentifier: 0
+  applicationIdentifier:
+    Android: com.example.ninjafruit
+    iPhone: com.example.ninjafruit
+  Standalone:
+  cloudProjectId: 
+  framebufferDepthMemorylessMode: 0
+  qualitySettingsNames:
+  - Very Low
+  - Low
+  - Medium
+  - High
+  - Very High
+  - Ultra
+  m_QualitySettingsNames:
+  - Very Low
+  - Low
+  - Medium
+  - High
+  - Very High
+  - Ultra
+  m_QualitySettingsValues: []
+  webplayerNetDebugUrl: http://localhost:8080
+  m_BuildTargetNames: []
+  allowUnsafePublicAssemblies: 0
+  clonedPlayerSettingsName: 
+  cloudEnabled: 0
+  insecureHttpWarningSuppressions: []
+  useLegacyResolutionDialogForWebGL: 0
+  m_OperatingSystemFamily: Windows
+  activeColorSpace: 0
+  enableNativePlatformBackendsForNewInputSystem: 1
+  disableInputActionSerialization: 0
+  defaultInterfaceOrientation: 0
+  allowHTTPClientToUsePersistentConnections: 1
+  logging:
+    enableRedirectingConsoleOutput: 1
