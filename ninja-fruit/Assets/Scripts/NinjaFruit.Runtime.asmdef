@@ -9,6 +9,9 @@
     "precompiledReferences": [],
     "autoReferenced": true,
     "defineConstraints": [],
+    "optionalUnityReferences": [
+        "Unity.InputSystem"
+    ],
     "versionDefines": [],
     "noEngineReferences": false
 }
