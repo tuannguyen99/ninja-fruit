@@ -9,9 +9,19 @@ namespace NinjaFruit.Gameplay
     {
         public event Action<int> OnScoreChanged;
         public event Action<int> OnHighScoreChanged;
+        public event Action<int> OnComboChanged;
 
         public int CurrentScore { get; private set; }
         public int HighScore { get; private set; }
+        public int ComboMultiplier { get; private set; } = 1;
+
+        [SerializeField]
+        private float comboWindow = 1.5f;
+
+        [SerializeField]
+        private int maxComboMultiplier = 5;
+
+        private float lastSliceTimestamp = -Mathf.Infinity;
 
         private const string HighScoreKey = "HighScore";
 
@@ -49,6 +59,36 @@ namespace NinjaFruit.Gameplay
                 HighScore = CurrentScore;
                 OnHighScoreChanged?.Invoke(HighScore);
             }
+        }
+
+        public int RegisterSlice(FruitType fruitType, bool isGolden = false, float timestamp = -1f)
+        {
+            if (timestamp < 0f) timestamp = Time.time;
+
+            // Determine combo
+            if (timestamp - lastSliceTimestamp < comboWindow)
+            {
+                ComboMultiplier = Mathf.Min(maxComboMultiplier, ComboMultiplier + 1);
+            }
+            else
+            {
+                ComboMultiplier = 1;
+            }
+
+            lastSliceTimestamp = timestamp;
+            OnComboChanged?.Invoke(ComboMultiplier);
+
+            int pts = CalculatePoints(fruitType, ComboMultiplier, isGolden);
+            AddPoints(pts);
+            return pts;
+        }
+
+        public void RegisterBombHit()
+        {
+            CurrentScore -= 50;
+            OnScoreChanged?.Invoke(CurrentScore);
+            ComboMultiplier = 1;
+            OnComboChanged?.Invoke(ComboMultiplier);
         }
 
         public void SaveHighScore()
