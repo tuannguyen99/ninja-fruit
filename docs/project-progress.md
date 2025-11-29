@@ -8,6 +8,18 @@
 
 ## ✅ Completed Tasks
 
+### Phase 2: Core Mechanics Implementation ✅ PARTIAL
+- [x] **2025-11-29** - Story 001 (FruitSpawner) implementation complete
+  - FruitSpawner.cs with CalculateSpawnInterval, CalculateFruitSpeed, ShouldSpawnBomb, SpawnFruit
+  - 10 Edit Mode tests + 4 Play Mode tests = 14/14 passing
+  - Test coverage: 100% of acceptance criteria
+- [x] **2025-11-29** - Story 002 (SwipeDetector) implementation complete
+  - SwipeDetector.cs with CalculateSwipeSpeed, IsValidSwipe, event-based detection
+  - 8 Edit Mode unit tests + 4 Play Mode integration tests = 12/12 passing
+  - Test coverage: 100% of acceptance criteria (speed calc, validation, event triggering)
+  - Fixed assembly definition organization (Edit Mode vs Play Mode separation)
+  - Fixed Input System compatibility issue with disabled component approach
+
 ### Phase 1: Foundation ✅ COMPLETE
 - [x] **2025-11-26** - Project initialized with BMAD framework
 - [x] **2025-11-26** - Created Game Brief (testing-focused, AI-assisted approach)
@@ -30,42 +42,37 @@
 
 ## 🔄 Current Task
 
-**Next Action:** Transition to Epic Planning with Max (Scrum Master)
+**In Progress:** Complete EPIC-001 (Core Slicing Mechanics)
 
-**What we'll do:**
-1. Return to Max (Scrum Master) via Party Mode
-2. Run `*sprint-planning` workflow to define epics
-3. Create Epic 1: Core Slicing Mechanics
-4. Create Epic 2: Scoring System
-5. Create Epic 3: Multi-Platform Input
-6. Generate sprint-status.yaml
+**Completed:**
+- ✅ Story 001 (FruitSpawner MVP) - 14/14 tests passing
+- ✅ Story 002 (SwipeDetector MVP) - 12/12 tests passing
+- ✅ Test infrastructure fixed (assembly defs, Input System compatibility)
 
-**Expected Duration:** 1-2 hours
-**Output:** Epic files + sprint-status.yaml
+**Next Actions:**
+1. Implement Story 003 (CollisionManager) to complete EPIC-001
+2. Run full test suite for EPIC-001 validation
+3. Update sprint retrospective
+4. Begin EPIC-002 (Scoring System) stories
+
+**Expected Duration for Story 003:** 2-3 hours
+**Output:** Collision detection with swipe intersection tests
 
 ---
 
 ## 📋 Upcoming Tasks
 
-### Phase 2: Epic & Story Planning (NEXT)
-- [ ] Define Epic 1: Core Slicing Mechanics
-- [ ] Define Epic 2: Scoring System
-- [ ] Define Epic 3: Multi-Platform Input
-- [ ] Generate sprint-status.yaml with `*sprint-planning`
-- [ ] Create story drafts for high-priority epics
+### Phase 2: Core Mechanics Implementation (IN PROGRESS - 50%)
+- [x] Story 001: FruitSpawner MVP - COMPLETE
+- [x] Story 002: SwipeDetector MVP - COMPLETE
+- [ ] Story 003: CollisionManager MVP - IN PROGRESS
+- [ ] EPIC-001 Retrospective - PENDING
 
-### Phase 3: Unity Project Setup (After Planning)
-- [ ] Create Unity 6 project
-- [ ] Install New Input System package
-- [ ] Set up assembly definitions (NinjaFruit.Runtime, NinjaFruit.Tests)
-- [ ] Configure Input Actions asset
-- [ ] Create initial scene structure
-
-### Phase 3: Epic & Story Planning
-- [ ] Define Epic 1: Core Slicing Mechanics
-- [ ] Define Epic 2: Scoring System
-- [ ] Define Epic 3: Multi-Platform Input
-- [ ] Generate sprint-status.yaml
+### Phase 3: Scoring System (NEXT)
+- [ ] Story 004: ScoreManager Base
+- [ ] Story 005: Combo Multiplier
+- [ ] Story 006: Bomb & Golden Fruit
+- [ ] EPIC-002 Retrospective
 
 ### Phase 4: Test Automation (MAIN SHOWCASE)
 - [ ] Generate test plans per epic
@@ -90,14 +97,14 @@
 ## 📊 Phase Completion Status
 
 ```
-Phase 1: Foundation          ████████████████████ 100% (All documents complete!)
-Phase 2: Epic Planning       ░░░░░░░░░░░░░░░░░░░░   0% (NEXT)
-Phase 3: Unity Setup         ░░░░░░░░░░░░░░░░░░░░   0%
-Phase 4: Test Automation     ░░░░░░░░░░░░░░░░░░░░   0%
-Phase 5: CI/CD Pipeline      ░░░░░░░░░░░░░░░░░░░░   0%
+Phase 1: Foundation          ████████████████████ 100% (Complete)
+Phase 2: Core Implementation █████████░░░░░░░░░░░  50% (2 of 3 stories in EPIC-001)
+Phase 3: Unity Setup         ████████████████████ 100% (Complete)
+Phase 4: Test Automation     █████████░░░░░░░░░░░  50% (Story 001 & 002 testing complete)
+Phase 5: CI/CD Pipeline      ░░░░░░░░░░░░░░░░░░░░   0% (Next)
 Phase 6: Customer Demo       ░░░░░░░░░░░░░░░░░░░░   0%
 
-Overall Progress: ███░░░░░░░░░░░░░░░░░ 17%
+Overall Progress: █████░░░░░░░░░░░░░░░ 33%
 ```
 
 ---
@@ -158,10 +165,14 @@ Overall Progress: ███░░░░░░░░░░░░░░░░░ 1
 - GitHub Actions CI/CD (GameCI integration)
 - Architecture emphasizes testability at every level
 
-### Next Session Preparation
-- Prepare to define epics with Max (Scrum Master)
-- Consider epic breakdown: Core Mechanics, Scoring, Input, UI, Testing
-- Think about story priorities for first sprint
+### 2025-11-29 - Story 001 & 002 Complete
+- FruitSpawner (STORY-001): 14/14 tests passing (10 Edit Mode + 4 Play Mode)
+- SwipeDetector (STORY-002): 12/12 tests passing (8 Edit Mode + 4 Play Mode)
+- Fixed assembly definition organization (Edit Mode vs Play Mode test separation)
+- Resolved Input System compatibility: disabled component in tests, use helper methods
+- Test organization now correct: Edit Mode tab shows ~18 tests, Play Mode tab shows ~8 tests
+- Key learning: Play Mode tests should disable component to avoid Input System errors
+- Design pattern: Helper methods (FeedPointerDown/Up) for test-friendly input simulation
 
 ---
 

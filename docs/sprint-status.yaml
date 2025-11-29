@@ -38,8 +38,8 @@ story_location: docs/stories
 development_status:
   # EPIC-001: Core Slicing Mechanics (13 pts)
   epic-001: backlog
-  story-001-fruitspawner-mvp: drafted
-  story-002-swipedetector-mvp: drafted
+  story-001-fruitspawner-mvp: done
+  story-002-swipedetector-mvp: done
   story-003-collisionmanager-mvp: drafted
   epic-001-retrospective: optional
 
@@ -66,10 +66,10 @@ sprint_summary:
   total_stories: 9
   total_points: 29
   contexted_epics: 0
-  stories_drafted: 9
+  stories_drafted: 7
   stories_ready: 0
   stories_in_progress: 0
-  stories_done: 0
+  stories_done: 2
 
 sprint_goals:
   - Deliver a minimal playable loop (spawn, swipe, slice)
