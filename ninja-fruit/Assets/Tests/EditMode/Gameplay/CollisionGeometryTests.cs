@@ -152,14 +152,15 @@ namespace NinjaFruit.Tests.EditMode.Gameplay
         /// This is CRITICAL: tangent swipes should NOT register as slices
         /// 
         /// Input:
-        /// - Swipe: (0,0) → (5,2)
-        /// - Fruit: (2,1) radius=1.0
-        /// - Geometry: Line is exactly tangent to circle
+        /// - Swipe: (0,0) → (10,0) [Horizontal line along y=0]
+        /// - Fruit: (5,1.0) radius=1.0 [Directly above swipe]
+        /// - Geometry: Line is exactly tangent to circle (touches perimeter at one point)
+        /// - Distance from line to center: exactly 1.0 (equals radius)
         /// 
         /// Expected: FALSE (tangent touches, doesn't pass-through)
         /// 
         /// Pass Criteria:
-        /// - Must reject tangent cases
+        /// - Must reject tangent cases (distance == radius)
         /// - Epsilon tolerance must not be too loose
         /// </summary>
         [Test]
@@ -167,8 +168,8 @@ namespace NinjaFruit.Tests.EditMode.Gameplay
         public void DoesSwipeIntersectFruit_TangentCase_ReturnsFalse()
         {
             Vector2 start = new Vector2(0, 0);
-            Vector2 end = new Vector2(5, 2);
-            Vector2 fruitPos = new Vector2(2, 1);
+            Vector2 end = new Vector2(10, 0);
+            Vector2 fruitPos = new Vector2(5, 1.0f);
             float radius = 1.0f;
 
             AssertIntersection(false, start, end, fruitPos, radius, 

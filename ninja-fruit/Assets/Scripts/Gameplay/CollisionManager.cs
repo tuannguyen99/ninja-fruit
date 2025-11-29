@@ -50,9 +50,36 @@ namespace NinjaFruit
         /// </summary>
         public bool DoesSwipeIntersectFruit(Vector2 start, Vector2 end, Vector2 fruitPos, float radius)
         {
-            // TODO: Implement line-circle intersection algorithm
-            // This is a placeholder that tests will use to verify behavior
-            return false;
+            // Edge case: zero-length swipe (start == end)
+            // A point collision is not considered a valid slice
+            float segmentLength = Vector2.Distance(start, end);
+            if (segmentLength < 0.00001f)
+                return false;
+
+            // Project fruit center onto the line segment to find closest point
+            // Vector from line start to fruit center
+            Vector2 PA = fruitPos - start;
+            // Vector from line start to line end
+            Vector2 BA = end - start;
+            
+            // Normalized projection parameter (0 = at start, 1 = at end)
+            // This tells us WHERE on the line segment the closest point is
+            float h = Mathf.Clamp01(Vector2.Dot(PA, BA) / Vector2.Dot(BA, BA));
+            
+            // Find the closest point on the line segment to the circle center
+            Vector2 closest = start + h * BA;
+            
+            // Calculate distance from circle center to closest point
+            float distance = Vector2.Distance(fruitPos, closest);
+            
+            // Pass-through condition:
+            // 1. Distance must be STRICTLY LESS than radius (distance < radius)
+            //    This rejects tangent cases where distance == radius
+            //    Tangent touches are geometric edge cases that should not count as slices
+            // 2. Closest point must be strictly within segment bounds (0 < h < 1)
+            //    This ensures we have both entry AND exit points
+            // 3. We reject partial hits where swipe starts/ends inside circle
+            return distance < radius && h > 0 && h < 1;
         }
 
         /// <summary>
@@ -79,9 +106,32 @@ namespace NinjaFruit
         /// </summary>
         public List<GameObject> GetFruitsInSwipePath(Vector2 start, Vector2 end)
         {
-            // TODO: Implement fruit detection
-            // This is a placeholder that tests will use to verify behavior
-            return new List<GameObject>();
+            List<GameObject> fruits = new List<GameObject>();
+            
+            // Find all fruits in the scene by searching for CircleCollider2D components
+            // This is more reliable than looking for a specific component type
+            CircleCollider2D[] allColliders = FindObjectsOfType<CircleCollider2D>();
+            
+            foreach (CircleCollider2D collider in allColliders)
+            {
+                // Skip invalid colliders
+                if (collider == null || collider.gameObject == null)
+                    continue;
+                
+                // Get fruit position from the collider's parent GameObject
+                Vector2 fruitPos = collider.transform.position;
+                
+                // Get the collision radius
+                float radius = collider.radius;
+                
+                // Check if this fruit intersects the swipe line
+                if (DoesSwipeIntersectFruit(start, end, fruitPos, radius))
+                {
+                    fruits.Add(collider.gameObject);
+                }
+            }
+            
+            return fruits;
         }
     }
 }
