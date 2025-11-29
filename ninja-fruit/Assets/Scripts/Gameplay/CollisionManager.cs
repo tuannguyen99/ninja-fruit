@@ -107,31 +107,92 @@ namespace NinjaFruit
         public List<GameObject> GetFruitsInSwipePath(Vector2 start, Vector2 end)
         {
             List<GameObject> fruits = new List<GameObject>();
-            
-            // Find all fruits in the scene by searching for CircleCollider2D components
-            // This is more reliable than looking for a specific component type
-            CircleCollider2D[] allColliders = FindObjectsOfType<CircleCollider2D>();
-            
-            foreach (CircleCollider2D collider in allColliders)
+
+            // Find all CircleCollider2D in the scene and treat them as potential fruits
+            // This allows tests to create fruit GameObjects with colliders without a Fruit component.
+            var allColliders = FindObjectsOfType<CircleCollider2D>();
+            foreach (var collider in allColliders)
             {
-                // Skip invalid colliders
-                if (collider == null || collider.gameObject == null)
-                    continue;
-                
-                // Get fruit position from the collider's parent GameObject
-                Vector2 fruitPos = collider.transform.position;
-                
-                // Get the collision radius
-                float radius = collider.radius;
-                
-                // Check if this fruit intersects the swipe line
+                if (collider == null) continue;
+                var go = collider.gameObject;
+                if (go == null || !go.activeInHierarchy) continue;
+                if (!collider.enabled) continue;
+
+                // Skip bombs here; bombs are handled separately in HandleSwipe
+                if (collider.GetComponent<NinjaFruit.Gameplay.Bomb>() != null) continue;
+
+                Vector2 fruitPos = collider.transform.TransformPoint(collider.offset);
+                float scale = Mathf.Max(collider.transform.lossyScale.x, collider.transform.lossyScale.y);
+                float radius = collider.radius * scale;
+
                 if (DoesSwipeIntersectFruit(start, end, fruitPos, radius))
                 {
-                    fruits.Add(collider.gameObject);
+                    fruits.Add(go);
                 }
             }
-            
+
+            // Fallback: if no colliders found (older tests may use Fruit components only),
+            // search for Fruit components and attempt detection using their colliders.
+            if (fruits.Count == 0)
+            {
+                var allFruits = FindObjectsOfType<NinjaFruit.Gameplay.Fruit>();
+                foreach (var fruit in allFruits)
+                {
+                    if (fruit == null || fruit.gameObject == null) continue;
+                    var collider = fruit.GetComponent<CircleCollider2D>();
+                    if (collider == null) continue;
+
+                    Vector2 fruitPos = collider.transform.TransformPoint(collider.offset);
+                    float scale = Mathf.Max(collider.transform.lossyScale.x, collider.transform.lossyScale.y);
+                    float radius = collider.radius * scale;
+
+                    if (DoesSwipeIntersectFruit(start, end, fruitPos, radius))
+                    {
+                        fruits.Add(fruit.gameObject);
+                    }
+                }
+            }
+
             return fruits;
+        }
+
+        /// <summary>
+        /// Handle a swipe end-to-end: detect fruits hit and notify ScoreManager
+        /// This is the runtime handoff that connects CollisionManager -> ScoreManager.
+        /// </summary>
+        public void HandleSwipe(Vector2 start, Vector2 end, NinjaFruit.Gameplay.ScoreManager scoreManager)
+        {
+            float t = Time.time;
+
+            // Handle fruits
+            var hits = GetFruitsInSwipePath(start, end);
+            foreach (var go in hits)
+            {
+                var fruit = go.GetComponent<NinjaFruit.Gameplay.Fruit>();
+                if (fruit == null) continue;
+
+                scoreManager.RegisterSlice(fruit.Type, fruit.IsGolden, t);
+
+                // Destroy fruit after slice
+                Object.Destroy(go);
+            }
+
+            // Handle bombs: find Bomb components and check intersection
+            var allBombs = FindObjectsOfType<NinjaFruit.Gameplay.Bomb>();
+            foreach (var bomb in allBombs)
+            {
+                if (bomb == null || bomb.gameObject == null) continue;
+                var bc = bomb.GetComponent<CircleCollider2D>();
+                if (bc == null) continue;
+
+                Vector2 bombPos = bc.transform.position;
+                float radius = bc.radius;
+                if (DoesSwipeIntersectFruit(start, end, bombPos, radius))
+                {
+                    scoreManager.RegisterBombHit();
+                    Object.Destroy(bomb.gameObject);
+                }
+            }
         }
     }
 }
