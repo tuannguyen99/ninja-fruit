@@ -81,5 +81,14 @@ namespace NinjaFruit
 
             pointerDownPos = null;
         }
+
+        /// <summary>
+        /// Test helper: Directly trigger a swipe event
+        /// Used by Play Mode tests to simulate swipe detection
+        /// </summary>
+        public void TriggerSwipeEvent(Vector2 start, Vector2 end)
+        {
+            OnSwipeDetected?.Invoke(start, end);
+        }
     }
 }
