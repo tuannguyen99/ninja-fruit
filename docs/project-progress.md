@@ -49,45 +49,46 @@
 
 ## 🔄 Current Task
 
-**Status:** ✅ EPIC-001 (Core Slicing Mechanics) COMPLETE
+**Status:** ✅ EPIC-001 (Core Slicing Mechanics) COMPLETE — EPIC-002 (Scoring System) IN PROGRESS
 
 **Completed Stories:**
 - ✅ Story 001 (FruitSpawner MVP) - 14/14 tests passing
 - ✅ Story 002 (SwipeDetector MVP) - 12/12 tests passing
 - ✅ Story 003 (CollisionManager MVP) - 24/24 tests passing
+- ✅ Story 004 (ScoreManager MVP) - core scoring and combo logic implemented
+- ✅ Story 005 (Combo Multiplier) - tests implemented and passing
+- ✅ Story 006 (Bomb & Golden Fruit) - tests implemented and passing
 
-**EPIC-001 Summary:**
-- Total Tests: 50/50 passing (100%)
-- Implementation: 3/3 stories complete
-- Test Coverage: 100% of acceptance criteria
-- Code Quality: Zero compilation errors, production-ready
+**EPIC Summary:**
+- Core Slicing (EPIC-001): complete
+- Scoring System (EPIC-002): stories 004/005/006 complete; remaining EPIC tasks: retrospective, UI polish
 
 **Next Actions:**
-1. ✅ Begin EPIC-002 (Scoring System) with Story-004
-2. ✅ Continue Story-005 (Combo Multiplier)
-3. ✅ Continue Story-006 (Bomb & Golden Fruit)
+1. Add CI to run EditMode and PlayMode tests automatically (GitHub Actions)
+2. Add UI/FX verification tests for combo and bomb/golden visual feedback
+3. Prepare EPIC-002 retrospective and merge completion reports
 
 ---
 
 ## 📋 Upcoming Tasks
 
-### Phase 2: Core Mechanics Implementation (IN PROGRESS - 50%)
+### Phase 2: Core Mechanics Implementation (COMPLETE)
 - [x] Story 001: FruitSpawner MVP - COMPLETE
 - [x] Story 002: SwipeDetector MVP - COMPLETE
-- [ ] Story 003: CollisionManager MVP - IN PROGRESS
-- [ ] EPIC-001 Retrospective - PENDING
+- [x] Story 003: CollisionManager MVP - COMPLETE
+- [x] EPIC-001 Retrospective - PENDING
 
-### Phase 3: Scoring System (NEXT)
-- [ ] Story 004: ScoreManager Base
-- [ ] Story 005: Combo Multiplier
-- [ ] Story 006: Bomb & Golden Fruit
+### Phase 3: Scoring System (COMPLETE)
+- [x] Story 004: ScoreManager Base
+- [x] Story 005: Combo Multiplier
+- [x] Story 006: Bomb & Golden Fruit
 - [ ] EPIC-002 Retrospective
 
 ### Phase 4: Test Automation (MAIN SHOWCASE)
-- [ ] Generate test plans per epic
-- [ ] Generate test specifications per story
-- [ ] Generate Unity Test Framework scaffolding
-- [ ] Implement tests
+- [x] Generate test plans per epic (stories 001..006)
+- [x] Generate test specifications per story (stories 001..006)
+- [x] Generate Unity Test Framework scaffolding (EditMode & PlayMode tests added)
+- [x] Implement tests (stories 001..006)
 
 ### Phase 5: CI/CD Pipeline
 - [ ] Generate GitHub Actions workflows
@@ -107,13 +108,13 @@
 
 ```
 Phase 1: Foundation          ████████████████████ 100% (Complete)
-Phase 2: Core Implementation ████████████████████ 100% (Complete - EPIC-001 Done)
+Phase 2: Core Implementation ████████████████████ 100% (Complete)
 Phase 3: Unity Setup         ████████████████████ 100% (Complete)
-Phase 4: Test Automation     █████████░░░░░░░░░░░  50% (Story 001 & 002 testing complete)
-Phase 5: CI/CD Pipeline      ░░░░░░░░░░░░░░░░░░░░   0% (Next)
+Phase 4: Test Automation     ██████████████████░░  80% (Stories 001..006 tests implemented)
+Phase 5: CI/CD Pipeline      ████░░░░░░░░░░░░░░░░   20% (work items: GitHub Actions + reporting)
 Phase 6: Customer Demo       ░░░░░░░░░░░░░░░░░░░░   0%
 
-Overall Progress: █████░░░░░░░░░░░░░░░ 33%
+Overall Progress: ████████░░░░░░░░░░░░░ 60%
 ```
 
 ---
@@ -198,5 +199,5 @@ Overall Progress: █████░░░░░░░░░░░░░░░ 3
 
 ---
 
-**Last Updated:** November 26, 2025 - Architecture Phase Complete  
-**Next Review:** After Epic Planning
+**Last Updated:** November 30, 2025 - Scoring System stories completed  
+**Next Review:** After EPIC-002 retrospective
