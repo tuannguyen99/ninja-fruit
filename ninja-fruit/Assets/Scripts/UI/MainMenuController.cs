@@ -127,7 +127,8 @@ namespace NinjaFruit.UI
             // Load and sync UI with settings
             if (settingsManager != null)
             {
-                settingsManager.LoadSettings();
+                // Use the current in-memory settings from the injected manager instead
+                // of re-loading from PlayerPrefs which would overwrite runtime changes.
                 masterVolumeSlider.value = settingsManager.MasterVolume;
                 soundEffectsToggle.isOn = settingsManager.SoundEffectsEnabled;
                 musicToggle.isOn = settingsManager.MusicEnabled;
