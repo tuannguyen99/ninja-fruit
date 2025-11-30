@@ -3,7 +3,9 @@
     "rootNamespace": "NinjaFruit.Tests.PlayMode",
     "references": [
         "NinjaFruit.Runtime",
-        "UnityEngine.TestRunner"
+        "NinjaFruit.Tests.Setup",
+        "UnityEngine.TestRunner",
+        "Unity.TextMeshPro"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

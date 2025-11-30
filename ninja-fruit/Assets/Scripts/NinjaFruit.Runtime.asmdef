@@ -1,7 +1,9 @@
 {
     "name": "NinjaFruit.Runtime",
     "rootNamespace": "NinjaFruit",
-    "references": [],
+    "references": [
+        "Unity.TextMeshPro"
+    ],
     "includePlatforms": [],
     "excludePlatforms": [],
     "allowUnsafeCode": false,

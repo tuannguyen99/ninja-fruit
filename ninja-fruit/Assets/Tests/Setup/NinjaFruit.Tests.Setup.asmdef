@@ -1,20 +1,19 @@
 {
     "name": "NinjaFruit.Tests.Setup",
-    "rootNamespace": "NinjaFruit.Tests.Setup",
+    "rootNamespace": "NinjaFruit.Tests.Utilities",
     "references": [
-        "NinjaFruit.Runtime"
+        "NinjaFruit.Runtime",
+        "Unity.TextMeshPro",
+        "Unity.InputSystem",
+        "Unity.InputSystem.UI"
     ],
-    "includePlatforms": [
-        "Editor"
-    ],
+    "includePlatforms": [],
     "excludePlatforms": [],
     "allowUnsafeCode": false,
-    "overrideReferences": true,
+    "overrideReferences": false,
     "precompiledReferences": [],
     "autoReferenced": false,
-    "defineConstraints": [
-        "UNITY_EDITOR"
-    ],
+    "defineConstraints": [],
     "versionDefines": [],
     "noEngineReferences": false
 }

@@ -57,19 +57,28 @@ development_status:
   story-009-input-actions-asset: drafted
   epic-003-retrospective: optional
 
+  # EPIC-004: User Interface & Game Flow (13 pts)
+  epic-004: contexted
+  story-010-hud-display: done
+  story-011-main-menu: backlog
+  story-012-game-over-screen: backlog
+  story-013-pause-menu: backlog
+  story-014-visual-effects: backlog
+  epic-004-retrospective: optional
+
 sprint_summary:
-  sprint_id: sprint-1-core-mvp
-  sprint_name: "Sprint 1 - Core MVP"
-  start_date: 2025-11-27
-  end_date: 2025-12-10
-  total_epics: 3
-  total_stories: 9
-  total_points: 29
-  contexted_epics: 0
-  stories_drafted: 7
+  sprint_id: sprint-2-ui-polish
+  sprint_name: "Sprint 2 - UI & Polish"
+  start_date: 2025-11-30
+  end_date: 2025-12-13
+  total_epics: 4
+  total_stories: 14
+  total_points: 42
+  contexted_epics: 1
+  stories_drafted: 8
   stories_ready: 0
   stories_in_progress: 0
-  stories_done: 2
+  stories_done: 7
 
 sprint_goals:
   - Deliver a minimal playable loop (spawn, swipe, slice)

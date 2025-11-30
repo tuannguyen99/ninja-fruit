@@ -49,7 +49,7 @@
 
 ## 🔄 Current Task
 
-**Status:** ✅ EPIC-001 (Core Slicing Mechanics) COMPLETE — EPIC-002 (Scoring System) IN PROGRESS
+**Status:** ✅ EPIC-001 & EPIC-002 COMPLETE — 🎯 EPIC-004 (UI & Game Flow) READY TO START
 
 **Completed Stories:**
 - ✅ Story 001 (FruitSpawner MVP) - 14/14 tests passing
@@ -60,13 +60,26 @@
 - ✅ Story 006 (Bomb & Golden Fruit) - tests implemented and passing
 
 **EPIC Summary:**
-- Core Slicing (EPIC-001): complete
-- Scoring System (EPIC-002): stories 004/005/006 complete; remaining EPIC tasks: retrospective, UI polish
+- Core Slicing (EPIC-001): ✅ COMPLETE
+- Scoring System (EPIC-002): ✅ COMPLETE
+- Multi-Platform Input (EPIC-003): Backlog (optional for now)
+- UI & Game Flow (EPIC-004): 📋 READY TO START
 
-**Next Actions:**
-1. Add CI to run EditMode and PlayMode tests automatically (GitHub Actions)
-2. Add UI/FX verification tests for combo and bomb/golden visual feedback
-3. Prepare EPIC-002 retrospective and merge completion reports
+**Next Story: STORY-010 (HUD Display System)**
+- File: `docs/stories/story-010-hud-display.md`
+- Points: 3
+- Status: READY FOR DEVELOPMENT
+- Approach: TDD (tests written first)
+
+**Quick Start:**
+1. Read: `UI_QUICK_START.md` (30-second overview)
+2. Read: `docs/stories/story-010-hud-display.md` (full details)
+3. Follow: TDD workflow (RED → GREEN → REFACTOR)
+
+**Supporting Documents Created:**
+- Epic: `docs/epics/epic-ui-game-flow.md`
+- Test Plan: `docs/test-plans/test-plan-story-010-hud.md`
+- Guide: `UI_IMPLEMENTATION_GUIDE.md`
 
 ---
 
@@ -78,11 +91,19 @@
 - [x] Story 003: CollisionManager MVP - COMPLETE
 - [x] EPIC-001 Retrospective - PENDING
 
-### Phase 3: Scoring System (COMPLETE)
+### Phase 3: Scoring System ✅ COMPLETE
 - [x] Story 004: ScoreManager Base
 - [x] Story 005: Combo Multiplier
 - [x] Story 006: Bomb & Golden Fruit
-- [ ] EPIC-002 Retrospective
+- [x] EPIC-002 Retrospective (document exists)
+
+### Phase 3.5: UI & Game Flow (IN PROGRESS)
+- [x] EPIC-004 Created and Drafted
+- [ ] Story 010: HUD Display System ← **NEXT TASK**
+- [ ] Story 011: Main Menu & Navigation
+- [ ] Story 012: Game Over Screen
+- [ ] Story 013: Pause Menu System
+- [ ] Story 014: Visual Feedback Effects
 
 ### Phase 4: Test Automation (MAIN SHOWCASE)
 - [x] Generate test plans per epic (stories 001..006)
@@ -109,12 +130,13 @@
 ```
 Phase 1: Foundation          ████████████████████ 100% (Complete)
 Phase 2: Core Implementation ████████████████████ 100% (Complete)
-Phase 3: Unity Setup         ████████████████████ 100% (Complete)
-Phase 4: Test Automation     ██████████████████░░  80% (Stories 001..006 tests implemented)
-Phase 5: CI/CD Pipeline      ████░░░░░░░░░░░░░░░░   20% (work items: GitHub Actions + reporting)
+Phase 3: Scoring System      ████████████████████ 100% (Complete)
+Phase 3.5: UI & Game Flow    ████░░░░░░░░░░░░░░░░  20% (EPIC-004 created, Story 010 ready)
+Phase 4: Test Automation     ██████████████████░░  90% (50/50 tests passing, TDD workflow established)
+Phase 5: CI/CD Pipeline      ████░░░░░░░░░░░░░░░░  20% (work items: GitHub Actions + reporting)
 Phase 6: Customer Demo       ░░░░░░░░░░░░░░░░░░░░   0%
 
-Overall Progress: ████████░░░░░░░░░░░░░ 60%
+Overall Progress: ██████████████░░░░░░░░ 65%
 ```
 
 ---
@@ -197,7 +219,16 @@ Overall Progress: ████████░░░░░░░░░░░░�
 | Architecture | `docs/game-architecture.md` | ✅ Complete | Technical architecture |
 | This Tracker | `docs/project-progress.md` | 🔄 Updated | Current file |
 
+### 2025-11-30 - EPIC-004 (UI & Game Flow) Created
+- Created comprehensive UI epic with 5 stories (13 points)
+- Story 010 (HUD Display System) fully documented with TDD approach
+- Generated test plan with 14 test cases for Story 010
+- Created `UI_QUICK_START.md` and `UI_IMPLEMENTATION_GUIDE.md` for fast onboarding
+- Updated sprint status to Sprint 2 (UI & Polish focus)
+- Project now 65% complete, ready to implement UI layer using TDD
+- Key focus: Event-driven UI updates, PlayMode integration tests
+
 ---
 
-**Last Updated:** November 30, 2025 - Scoring System stories completed  
-**Next Review:** After EPIC-002 retrospective
+**Last Updated:** November 30, 2025 - EPIC-004 ready to start  
+**Next Review:** After Story 010 completion
