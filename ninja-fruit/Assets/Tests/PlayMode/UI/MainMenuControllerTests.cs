@@ -5,7 +5,6 @@ using UnityEngine.TestTools;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.EventSystems;
-using UnityEngine.InputSystem.UI;
 using NinjaFruit.UI;
 
 namespace NinjaFruit.Tests.PlayMode.UI
@@ -68,7 +67,19 @@ namespace NinjaFruit.Tests.PlayMode.UI
             // Create event system
             var eventSystemGO = new GameObject("EventSystem");
             eventSystemGO.AddComponent<EventSystem>();
-            eventSystemGO.AddComponent<InputSystemUIInputModule>();
+
+            // Try to attach InputSystemUIInputModule if the Input System package is available.
+            // Fall back to StandaloneInputModule otherwise to keep tests compatible with both setups.
+            var inputSystemType = System.Type.GetType("UnityEngine.InputSystem.UI.InputSystemUIInputModule, Unity.InputSystem.UI")
+                                  ?? System.Type.GetType("UnityEngine.InputSystem.UI.InputSystemUIInputModule, Unity.InputSystem");
+            if (inputSystemType != null)
+            {
+                eventSystemGO.AddComponent(inputSystemType);
+            }
+            else
+            {
+                eventSystemGO.AddComponent<StandaloneInputModule>();
+            }
         }
         
         [TearDown]
