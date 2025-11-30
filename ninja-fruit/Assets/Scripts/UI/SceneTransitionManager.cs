@@ -33,7 +33,6 @@ namespace NinjaFruit.UI
         /// </summary>
         public void QuitApplication()
         {
-            // TODO: Implement quit logic
             #if UNITY_EDITOR
             UnityEditor.EditorApplication.isPlaying = false;
             #else

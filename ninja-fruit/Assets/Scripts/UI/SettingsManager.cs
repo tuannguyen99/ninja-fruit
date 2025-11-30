@@ -54,7 +54,6 @@ namespace NinjaFruit.UI
         /// </summary>
         public void SetMasterVolume(float volume)
         {
-            // TODO: Implement volume setting with clamping
             MasterVolume = Mathf.Clamp01(volume);
             OnMasterVolumeChanged?.Invoke(MasterVolume);
         }
@@ -64,7 +63,6 @@ namespace NinjaFruit.UI
         /// </summary>
         public void SetSoundEffects(bool enabled)
         {
-            // TODO: Implement sound effects toggle
             SoundEffectsEnabled = enabled;
             OnSoundEffectsToggled?.Invoke(SoundEffectsEnabled);
         }
@@ -74,7 +72,6 @@ namespace NinjaFruit.UI
         /// </summary>
         public void SetMusic(bool enabled)
         {
-            // TODO: Implement music toggle
             MusicEnabled = enabled;
             OnMusicToggled?.Invoke(MusicEnabled);
         }

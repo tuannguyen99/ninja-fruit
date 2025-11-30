@@ -68,7 +68,6 @@ namespace NinjaFruit.UI
         /// </summary>
         public void ResetScores()
         {
-            // TODO: Implement reset logic
             PlayerPrefs.DeleteKey(HIGH_SCORE_KEY);
             PlayerPrefs.DeleteKey(TOTAL_FRUITS_KEY);
             PlayerPrefs.DeleteKey(LONGEST_COMBO_KEY);
