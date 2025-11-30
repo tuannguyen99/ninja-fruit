@@ -5,6 +5,7 @@ using UnityEngine.TestTools;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.EventSystems;
+using UnityEngine.InputSystem.UI;
 using NinjaFruit.UI;
 
 namespace NinjaFruit.Tests.PlayMode.UI
