@@ -33,10 +33,9 @@ namespace NinjaFruit.UI
         /// </summary>
         public void LoadSettings()
         {
-            // TODO: Implement PlayerPrefs loading with defaults
-            MasterVolume = DEFAULT_MASTER_VOLUME;
-            SoundEffectsEnabled = DEFAULT_SOUND_FX;
-            MusicEnabled = DEFAULT_MUSIC;
+            MasterVolume = PlayerPrefs.GetFloat(MASTER_VOLUME_KEY, DEFAULT_MASTER_VOLUME);
+            SoundEffectsEnabled = PlayerPrefs.GetInt(SOUND_FX_KEY, DEFAULT_SOUND_FX ? 1 : 0) == 1;
+            MusicEnabled = PlayerPrefs.GetInt(MUSIC_KEY, DEFAULT_MUSIC ? 1 : 0) == 1;
         }
         
         /// <summary>
@@ -44,7 +43,10 @@ namespace NinjaFruit.UI
         /// </summary>
         public void SaveSettings()
         {
-            // TODO: Implement PlayerPrefs save logic
+            PlayerPrefs.SetFloat(MASTER_VOLUME_KEY, MasterVolume);
+            PlayerPrefs.SetInt(SOUND_FX_KEY, SoundEffectsEnabled ? 1 : 0);
+            PlayerPrefs.SetInt(MUSIC_KEY, MusicEnabled ? 1 : 0);
+            PlayerPrefs.Save();
         }
         
         /// <summary>

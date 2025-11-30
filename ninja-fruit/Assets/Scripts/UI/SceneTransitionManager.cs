@@ -17,8 +17,7 @@ namespace NinjaFruit.UI
         /// </summary>
         public void LoadGameplayScene()
         {
-            // TODO: Implement scene loading
-            // SceneManager.LoadScene(GAMEPLAY_SCENE, LoadSceneMode.Single);
+            SceneManager.LoadScene(GAMEPLAY_SCENE, LoadSceneMode.Single);
         }
         
         /// <summary>
@@ -26,8 +25,7 @@ namespace NinjaFruit.UI
         /// </summary>
         public void LoadMainMenuScene()
         {
-            // TODO: Implement scene loading
-            // SceneManager.LoadScene(MAIN_MENU_SCENE, LoadSceneMode.Single);
+            SceneManager.LoadScene(MAIN_MENU_SCENE, LoadSceneMode.Single);
         }
         
         /// <summary>

@@ -43,11 +43,23 @@ namespace NinjaFruit.UI
         /// </summary>
         public void Initialize()
         {
-            // TODO: Implement initialization logic
-            // - Show main menu panel
-            // - Hide other panels
-            // - Wire button click events
-            // - Set platform-specific UI visibility
+            // Wire button listeners
+            playButton?.onClick.AddListener(OnPlayClicked);
+            highScoresButton?.onClick.AddListener(OnHighScoresClicked);
+            settingsButton?.onClick.AddListener(OnSettingsClicked);
+            quitButton?.onClick.AddListener(OnQuitClicked);
+            highScoresBackButton?.onClick.AddListener(OnBackClicked);
+            settingsBackButton?.onClick.AddListener(OnBackClicked);
+            
+            // Show main menu by default
+            ShowMainMenu();
+            
+            // Platform-specific: hide quit button on non-PC
+            #if UNITY_STANDALONE
+            quitButton?.gameObject.SetActive(true);
+            #else
+            quitButton?.gameObject.SetActive(false);
+            #endif
         }
         
         /// <summary>
@@ -79,7 +91,9 @@ namespace NinjaFruit.UI
         /// </summary>
         public void ShowMainMenu()
         {
-            // TODO: Implement panel switching
+            mainMenuPanel?.SetActive(true);
+            highScoresPanel?.SetActive(false);
+            settingsPanel?.SetActive(false);
         }
         
         /// <summary>
@@ -87,7 +101,18 @@ namespace NinjaFruit.UI
         /// </summary>
         public void ShowHighScores()
         {
-            // TODO: Implement panel switching + data loading
+            mainMenuPanel?.SetActive(false);
+            highScoresPanel?.SetActive(true);
+            settingsPanel?.SetActive(false);
+            
+            // Load and display scores
+            if (highScoreManager != null)
+            {
+                highScoreManager.LoadScores();
+                highScoreText.text = highScoreManager.HighScore.ToString();
+                totalFruitsText.text = highScoreManager.TotalFruitsSliced.ToString();
+                longestComboText.text = highScoreManager.LongestCombo.ToString() + "x";
+            }
         }
         
         /// <summary>
@@ -95,33 +120,44 @@ namespace NinjaFruit.UI
         /// </summary>
         public void ShowSettings()
         {
-            // TODO: Implement panel switching + settings sync
+            mainMenuPanel?.SetActive(false);
+            highScoresPanel?.SetActive(false);
+            settingsPanel?.SetActive(true);
+            
+            // Load and sync UI with settings
+            if (settingsManager != null)
+            {
+                settingsManager.LoadSettings();
+                masterVolumeSlider.value = settingsManager.MasterVolume;
+                soundEffectsToggle.isOn = settingsManager.SoundEffectsEnabled;
+                musicToggle.isOn = settingsManager.MusicEnabled;
+            }
         }
         
         // Button click handlers
         public void OnPlayClicked()
         {
-            // TODO: Implement play button logic
+            sceneManager?.LoadGameplayScene();
         }
         
         public void OnHighScoresClicked()
         {
-            // TODO: Implement high scores button logic
+            ShowHighScores();
         }
         
         public void OnSettingsClicked()
         {
-            // TODO: Implement settings button logic
+            ShowSettings();
         }
         
         public void OnQuitClicked()
         {
-            // TODO: Implement quit button logic
+            sceneManager?.QuitApplication();
         }
         
         public void OnBackClicked()
         {
-            // TODO: Implement back button logic
+            ShowMainMenu();
         }
         
         // Test helper methods (for assertions)

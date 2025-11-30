@@ -22,10 +22,9 @@ namespace NinjaFruit.UI
         /// </summary>
         public void LoadScores()
         {
-            // TODO: Implement PlayerPrefs loading logic
-            HighScore = 0;
-            TotalFruitsSliced = 0;
-            LongestCombo = 0;
+            HighScore = PlayerPrefs.GetInt(HIGH_SCORE_KEY, 0);
+            TotalFruitsSliced = PlayerPrefs.GetInt(TOTAL_FRUITS_KEY, 0);
+            LongestCombo = PlayerPrefs.GetInt(LONGEST_COMBO_KEY, 0);
         }
         
         /// <summary>
@@ -33,8 +32,12 @@ namespace NinjaFruit.UI
         /// </summary>
         public void SaveHighScore(int score)
         {
-            // TODO: Implement high score save logic
-            // Should only update if score > HighScore
+            if (score > HighScore)
+            {
+                HighScore = score;
+                PlayerPrefs.SetInt(HIGH_SCORE_KEY, score);
+                PlayerPrefs.Save();
+            }
         }
         
         /// <summary>
@@ -42,7 +45,9 @@ namespace NinjaFruit.UI
         /// </summary>
         public void SaveFruitCount(int count)
         {
-            // TODO: Implement fruit count accumulation logic
+            TotalFruitsSliced += count;
+            PlayerPrefs.SetInt(TOTAL_FRUITS_KEY, TotalFruitsSliced);
+            PlayerPrefs.Save();
         }
         
         /// <summary>
@@ -50,7 +55,12 @@ namespace NinjaFruit.UI
         /// </summary>
         public void SaveCombo(int combo)
         {
-            // TODO: Implement combo save logic
+            if (combo > LongestCombo)
+            {
+                LongestCombo = combo;
+                PlayerPrefs.SetInt(LONGEST_COMBO_KEY, combo);
+                PlayerPrefs.Save();
+            }
         }
         
         /// <summary>
