@@ -49,7 +49,7 @@
 
 ## 🔄 Current Task
 
-**Status:** ✅ EPIC-001 & EPIC-002 COMPLETE — 🎯 EPIC-004 (UI & Game Flow) READY TO START
+**Status:** ✅ STORY-010 COMPLETE — 🎯 STORY-011 (Main Menu & Navigation) READY TO START
 
 **Completed Stories:**
 - ✅ Story 001 (FruitSpawner MVP) - 14/14 tests passing
@@ -58,28 +58,32 @@
 - ✅ Story 004 (ScoreManager MVP) - core scoring and combo logic implemented
 - ✅ Story 005 (Combo Multiplier) - tests implemented and passing
 - ✅ Story 006 (Bomb & Golden Fruit) - tests implemented and passing
+- ✅ Story 010 (HUD Display System) - 14/14 tests passing
 
 **EPIC Summary:**
 - Core Slicing (EPIC-001): ✅ COMPLETE
 - Scoring System (EPIC-002): ✅ COMPLETE
 - Multi-Platform Input (EPIC-003): Backlog (optional for now)
-- UI & Game Flow (EPIC-004): 📋 READY TO START
+- UI & Game Flow (EPIC-004): 📋 IN PROGRESS (1/5 stories complete)
 
-**Next Story: STORY-010 (HUD Display System)**
-- File: `docs/stories/story-010-hud-display.md`
+**Next Story: STORY-011 (Main Menu & Navigation)**
+- File: `docs/stories/story-011-main-menu.md`
 - Points: 3
 - Status: READY FOR DEVELOPMENT
 - Approach: TDD (tests written first)
+- Tests: 18 total (8 Edit Mode + 10 Play Mode)
 
 **Quick Start:**
-1. Read: `UI_QUICK_START.md` (30-second overview)
-2. Read: `docs/stories/story-010-hud-display.md` (full details)
+1. Read: `STORY_011_QUICK_START.md` (60-second overview)
+2. Read: `docs/stories/story-011-main-menu.md` (full details)
 3. Follow: TDD workflow (RED → GREEN → REFACTOR)
 
 **Supporting Documents Created:**
-- Epic: `docs/epics/epic-ui-game-flow.md`
-- Test Plan: `docs/test-plans/test-plan-story-010-hud.md`
-- Guide: `UI_IMPLEMENTATION_GUIDE.md`
+- Story: `docs/stories/story-011-main-menu.md`
+- Test Plan: `docs/test-plans/test-plan-story-011-main-menu.md`
+- Test Spec: `docs/test-specs/test-spec-story-011-main-menu.md`
+- Test Scaffolding: `docs/test-scaffolding/test-scaffolding-story-011-main-menu.md`
+- Quick Start: `STORY_011_QUICK_START.md`
 
 ---
 
@@ -99,8 +103,8 @@
 
 ### Phase 3.5: UI & Game Flow (IN PROGRESS)
 - [x] EPIC-004 Created and Drafted
-- [ ] Story 010: HUD Display System ← **NEXT TASK**
-- [ ] Story 011: Main Menu & Navigation
+- [x] Story 010: HUD Display System ✅ COMPLETE
+- [ ] Story 011: Main Menu & Navigation ← **NEXT TASK** (Ready for Development)
 - [ ] Story 012: Game Over Screen
 - [ ] Story 013: Pause Menu System
 - [ ] Story 014: Visual Feedback Effects
@@ -131,12 +135,12 @@
 Phase 1: Foundation          ████████████████████ 100% (Complete)
 Phase 2: Core Implementation ████████████████████ 100% (Complete)
 Phase 3: Scoring System      ████████████████████ 100% (Complete)
-Phase 3.5: UI & Game Flow    ████░░░░░░░░░░░░░░░░  20% (EPIC-004 created, Story 010 ready)
-Phase 4: Test Automation     ██████████████████░░  90% (50/50 tests passing, TDD workflow established)
+Phase 3.5: UI & Game Flow    ████████░░░░░░░░░░░░  40% (Story 010 done, Story 011 ready)
+Phase 4: Test Automation     ██████████████████░░  90% (64/64 tests passing, TDD workflow established)
 Phase 5: CI/CD Pipeline      ████░░░░░░░░░░░░░░░░  20% (work items: GitHub Actions + reporting)
 Phase 6: Customer Demo       ░░░░░░░░░░░░░░░░░░░░   0%
 
-Overall Progress: ██████████████░░░░░░░░ 65%
+Overall Progress: ███████████████░░░░░ 70%
 ```
 
 ---
@@ -219,16 +223,18 @@ Overall Progress: ██████████████░░░░░░�
 | Architecture | `docs/game-architecture.md` | ✅ Complete | Technical architecture |
 | This Tracker | `docs/project-progress.md` | 🔄 Updated | Current file |
 
-### 2025-11-30 - EPIC-004 (UI & Game Flow) Created
-- Created comprehensive UI epic with 5 stories (13 points)
-- Story 010 (HUD Display System) fully documented with TDD approach
-- Generated test plan with 14 test cases for Story 010
-- Created `UI_QUICK_START.md` and `UI_IMPLEMENTATION_GUIDE.md` for fast onboarding
-- Updated sprint status to Sprint 2 (UI & Polish focus)
-- Project now 65% complete, ready to implement UI layer using TDD
-- Key focus: Event-driven UI updates, PlayMode integration tests
+### 2025-11-30 - STORY-011 (Main Menu & Navigation) Documentation Complete
+- Created comprehensive story document with TDD approach
+- Generated test plan with 18 test cases (8 Edit Mode + 10 Play Mode)
+- Created detailed test specifications with all assertions
+- Generated test scaffolding with complete stub implementations
+- Created quick start guide for rapid development
+- Updated sprint status to "drafted" for Story 011
+- Project now 70% complete, ready to implement main menu system
+- Key features: Play button, High Scores panel, Settings panel, Quit button (PC), data persistence via PlayerPrefs
+- Estimated development time: 4 hours using TDD workflow
 
 ---
 
-**Last Updated:** November 30, 2025 - EPIC-004 ready to start  
-**Next Review:** After Story 010 completion
+**Last Updated:** November 30, 2025 - Story 011 ready to start  
+**Next Review:** After Story 011 completion

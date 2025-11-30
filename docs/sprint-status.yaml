@@ -60,7 +60,7 @@ development_status:
   # EPIC-004: User Interface & Game Flow (13 pts)
   epic-004: contexted
   story-010-hud-display: done
-  story-011-main-menu: backlog
+  story-011-main-menu: drafted
   story-012-game-over-screen: backlog
   story-013-pause-menu: backlog
   story-014-visual-effects: backlog
@@ -75,7 +75,7 @@ sprint_summary:
   total_stories: 14
   total_points: 42
   contexted_epics: 1
-  stories_drafted: 8
+  stories_drafted: 9
   stories_ready: 0
   stories_in_progress: 0
   stories_done: 7
