@@ -67,7 +67,7 @@ namespace NinjaFruit.Tests.PlayMode.UI
             // Create event system
             var eventSystemGO = new GameObject("EventSystem");
             eventSystemGO.AddComponent<EventSystem>();
-            eventSystemGO.AddComponent<StandaloneInputModule>();
+            eventSystemGO.AddComponent<InputSystemUIInputModule>();
         }
         
         [TearDown]
