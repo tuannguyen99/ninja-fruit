@@ -14,6 +14,14 @@ namespace NinjaFruit
         [Header("Fruit Prefabs")]
         [SerializeField] private GameObject[] fruitPrefabs;
 
+        /// <summary>
+        /// Public setter for fruit prefabs (used by editor scripts)
+        /// </summary>
+        public void SetFruitPrefabs(GameObject[] prefabs)
+        {
+            fruitPrefabs = prefabs;
+        }
+
         [Header("Bomb Configuration")]
         [SerializeField] private int bombSpawnRate = 10; // 1 bomb per 10 fruits (10%)
 
@@ -22,7 +30,7 @@ namespace NinjaFruit
         [SerializeField] private float goldenChance = 0.05f;
 
         [Header("Spawn Configuration")]
-        [SerializeField] private Vector2 spawnPosition = new Vector2(0, -5);
+        // [SerializeField] private Vector2 spawnPosition = new Vector2(0, -5); // Now using transform.position
         [SerializeField] private int currentScore = 0;
         [Header("Prefab Resources")]
         [Tooltip("Resource path (under Assets/Resources) for fruit prefab folder, example: Prefabs/FruitPrefab")]
@@ -82,13 +90,13 @@ namespace NinjaFruit
                     Debug.LogError("No fruit prefabs assigned to FruitSpawner and no resource prefab found at " + fruitPrefabResourcePath);
                     return;
                 }
-                GameObject fruit = Instantiate(loaded, spawnPosition, Quaternion.identity);
+                GameObject fruit = Instantiate(loaded, transform.position, Quaternion.identity);
                 FinalizeSpawnedFruit(fruit);
                 return;
             }
 
             GameObject prefab = fruitPrefabs[Random.Range(0, fruitPrefabs.Length)];
-            GameObject fruitObj = Instantiate(prefab, spawnPosition, Quaternion.identity);
+            GameObject fruitObj = Instantiate(prefab, transform.position, Quaternion.identity);
             FinalizeSpawnedFruit(fruitObj);
         }
 
@@ -113,7 +121,7 @@ namespace NinjaFruit
             {
                 float speed = CalculateFruitSpeed(currentScore);
                 float horizontalDirection = Random.Range(-1f, 1f);
-                Vector2 velocity = new Vector2(horizontalDirection, 1f).normalized * speed;
+                Vector2 velocity = new Vector2(horizontalDirection, -1f).normalized * speed; // Fall down from top
                 // Set the common velocity property
                 rb.linearVelocity = velocity;
 
@@ -142,13 +150,13 @@ namespace NinjaFruit
             var prefab = Resources.Load<GameObject>(bombPrefabResourcePath);
             if (prefab != null)
             {
-                bombObj = Instantiate(prefab, spawnPosition, Quaternion.identity);
+                bombObj = Instantiate(prefab, transform.position, Quaternion.identity);
             }
             else
             {
                 // Create programmatic bomb GameObject
                 bombObj = new GameObject("Bomb");
-                bombObj.transform.position = spawnPosition;
+                bombObj.transform.position = transform.position;
                 var cc = bombObj.AddComponent<CircleCollider2D>();
                 cc.radius = 1.0f;
                 var rb = bombObj.AddComponent<Rigidbody2D>();
